@@ -1,17 +1,15 @@
 package main
-import(
-"fmt"; 
-"github.com/google/go-github/v92/github"; 
-//"context" //will use later on in coding
-)
+import("fmt"; "github.com/google/go-github/v92/github"; "context")
 
 func main() {
 	fmt.Println("Hello, Bounty Hunter!")
 
-	//test, try := github.NewClient()
-	//if try != nil {
+	test, try := github.NewClient()
+	if try != nil {
 	
-	//}
-	//var cont = test.Organizations //still figuring out
+	}
+
+	o, _, try := test.Organizations.List(context.Background(), "CoolCaper", nil)
+	fmt.Println(o)
 }
 
