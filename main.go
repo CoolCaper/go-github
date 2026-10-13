@@ -8,8 +8,7 @@ func main() {
 	if try != nil {
 	
 	}
-
-	o, _, try := test.Organizations.List(context.Background(), "CoolCaper", nil)
-	fmt.Println(o)
+	var repos = &github.RepositoryListByOrgOptions{Type: "public"}
+	fmt.Println(orgs)
 }
 
