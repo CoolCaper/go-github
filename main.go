@@ -3,19 +3,13 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
-	"time"
 
 	"github.com/google/go-github/v92/github"
 )
 
 func main() {
-	//fmt.Println("Hello, Bounty Hunter!")
+	fmt.Println("Hello, Bounty Hunter!")
 
-	fmt.Println(time.Second)
-	if token == "" {
-		log.Fatal("set GITHUB_TOKEN")
-	}
 
 	//example code from github api docs, used for  testing 
 
