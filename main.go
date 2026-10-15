@@ -1,8 +1,21 @@
 package main
-import("fmt"; "github.com/google/go-github/v92/github"; "context")
+
+import (
+	"context"
+	"fmt"
+	"log"
+	"time"
+
+	"github.com/google/go-github/v92/github"
+)
 
 func main() {
-	fmt.Println("Hello, Bounty Hunter!")
+	//fmt.Println("Hello, Bounty Hunter!")
+
+	fmt.Println(time.Second)
+	if token == "" {
+		log.Fatal("set GITHUB_TOKEN")
+	}
 
 	//example code from github api docs, used for  testing 
 
@@ -10,23 +23,27 @@ func main() {
 	if err != nil {
 		// Handle error.
 	}
-
+	//fmt.Println(client)
 	opt := &github.RepositoryListByOrgOptions{
 		ListOptions: github.ListOptions{PerPage: 10},
 	}
+	
+	//fmt.Println(opt)
 	// get all pages of results
 	var allRepos []*github.Repository
 	for {
 		repos, resp, err := client.Repositories.ListByOrg(context.Background(), "github", opt)
+		//fmt.Println(client.Repositories.ListByOrg(context.Background(), "github", opt))
 		if err != nil {
+
 		}
 		allRepos = append(allRepos, repos...)
+
 		if resp.NextPage == 0 {
 			break
 		}
 		opt.Page = resp.NextPage
 	}
-
-	//CURRENTLY UNUSED
+	fmt.Println(allRepos)
 }
 
