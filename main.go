@@ -19,7 +19,7 @@ func main() {
 	}
 	//fmt.Println(client)
 	opt := &github.RepositoryListByOrgOptions{
-		ListOptions: github.ListOptions{PerPage: 10},
+		ListOptions: github.ListOptions{PerPage: 0},
 	}
 	
 	//fmt.Println(opt)
@@ -27,7 +27,7 @@ func main() {
 	var allRepos []*github.Repository
 	for {
 		repos, resp, err := client.Repositories.ListByOrg(context.Background(), "github", opt)
-		//fmt.Println(client.Repositories.ListByOrg(context.Background(), "github", opt))
+		fmt.Println(client.Repositories.ListByOrg(context.Background(), "github", opt))
 		if err != nil {
 
 		}
@@ -38,6 +38,5 @@ func main() {
 		}
 		opt.Page = resp.NextPage
 	}
-	fmt.Println(allRepos)
 }
 
