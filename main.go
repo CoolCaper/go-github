@@ -18,25 +18,25 @@ func main() {
 		// Handle error.
 	}
 	//fmt.Println(client)
-	opt := &github.RepositoryListByOrgOptions{
-		ListOptions: github.ListOptions{PerPage: 0},
-	}
+	opt := &github.ListOptions{Page: 10}
 	
 	//fmt.Println(opt)
 	// get all pages of results
-	var allRepos []*github.Repository
 	for {
-		repos, resp, err := client.Repositories.ListByOrg(context.Background(), "github", opt)
-		fmt.Println(client.Repositories.ListByOrg(context.Background(), "github", opt))
+		repos, resp, err := client.Organizations.List(context.Background(), "CoolCaper", opt)
+		fmt.Println(resp)
+		fmt.Println(repos)
+		//fmt.Println(client.Repositories.ListByOrg(context.Background(), "github", opt))
 		if err != nil {
 
 		}
-		allRepos = append(allRepos, repos...)
 
 		if resp.NextPage == 0 {
 			break
 		}
 		opt.Page = resp.NextPage
 	}
+
+	//UNUSED VARIABLES	
 }
 
